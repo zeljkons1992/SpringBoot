@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Radi!</h1>
+
+<form action="/sacuvaj" method="post">
+  First name:<br>
+  <input type="text" name="ime">
+  <br>
+  Last name:<br>
+  <input type="text" name="sifra">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<table>
+    <th:block th:each="user : ${radnici}">
+        <tr>
+            <td th:text="${user.name}">...</td>
+            <td th:text="${user.password}">...</td>
+        </tr>
+    </th:block>
+</table>
+
+</body>
+<script type="text/javascript">
+$.ajax({
+    type: 'GET',
+    url: "/getUser",
+    success:function(data){
+     alert(data.name + " " + data.password);
+    }
+});
+</script>
+</html>
