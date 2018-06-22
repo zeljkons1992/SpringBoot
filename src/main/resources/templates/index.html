@@ -81,9 +81,11 @@ $.ajax({
         for (var i = 0; i < data.length; i++)
         {
         	mytable.row.add([data[i].name, data[i].password]);
+        	mytable.draw();
         }
-        mytable.draw();
+        
     }
+
 });
 </script>
 </html>
