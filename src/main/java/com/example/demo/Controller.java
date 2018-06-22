@@ -35,4 +35,12 @@ public class Controller {
     	
     	return "redirect:/";
     }
+    
+    @RequestMapping("/delete")
+    public String deleteAll() {
+    	Repository.deleteAll();
+    	
+    	return "redirect:/";
+    }
+    
 }
