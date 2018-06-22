@@ -16,7 +16,7 @@ public class Controller {
     public Controller(repository repository) {
         Repository = repository;
     }
-    @RequestMapping("/")
+    @RequestMapping("/*")
     public String getRadnik(Model model){
 
         model.addAttribute("radnici", Repository.findAll());
