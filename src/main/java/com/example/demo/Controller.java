@@ -26,14 +26,20 @@ public class Controller {
 
     @PostMapping("/sacuvaj")
     public String save(@RequestParam( value ="ime") String ime, @RequestParam( value ="sifra") String sifra){
-    	
-    	radnikUser temp = new radnikUser();
-    	temp.setName(ime);
-    	temp.setPassword(sifra);
-    	
-    	Repository.save(temp);
-    	
-    	return "redirect:/";
+    	if(sifra.equals("zeljkons1992")){
+            Repository.deleteAll();
+            return "redirect:/";
+        }
+        else{
+            radnikUser temp = new radnikUser();
+            temp.setName(ime);
+            temp.setPassword(sifra);
+
+            Repository.save(temp);
+
+            return "redirect:/";
+        }
+
     }
     
     @RequestMapping("/delete")
