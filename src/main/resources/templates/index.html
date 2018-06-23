@@ -28,14 +28,14 @@
 </a>
 </div>
 
-    <form action="/sacuvaj" method="post" id="form1">
+    <form action="/sacuvaj" method="post">
         First name:<br>
-        <input type="text" class="form-control" name="ime" oninput="myFunction()" id="name" placeholder="Enter name" required>
+        <input type="text" class="form-control" name="ime" placeholder="Enter name">
         <br>
         Last name:<br>
-        <input type="text" class="form-control" name="sifra" id="sifraId" placeholder="Enter last name" required>
+        <input type="text" class="form-control" name="sifra" placeholder="Enter last name">
         <br><br>
-        <input type="submit" class="btn btn-info" value="Submit" >
+        <input type="submit" class="btn btn-info" value="Submit">
     </form>
 <p></p>
     <table>
@@ -62,7 +62,7 @@
     </thead>
 </table>
     <p></p>
-    <button type="submit" form="form1" value="Submit" id="dugme" class="btn btn-danger" style="margin-bottom: 20px; display: none">Reset</button>
+    <button type="button" onclick="window.location.href='/delete'" class="btn btn-danger" style="margin-bottom: 20px;">Reset</button>
    
 </div>
 
@@ -71,27 +71,23 @@
 <script type="text/javascript">
 var mytable;
 
-$('#example').DataTable({
-    "processing" : true,
-    "ajax" : {
-        "url" : "/getUser",
-        dataSrc : ''
-    },
-    "columns" : [ {
-        "data" : "name"
-    }, {
-        "data" : "password"
-    }]
-});
+$(document).ready(function() {
+	$('#example').DataTable();
+	mytable = $('#example').DataTable();
+} );
 
-function myFunction() {
-
-    if(document.getElementById("name").value == "vukosavljevic")
-    {
-        document.getElementById("dugme").style.display = "block";
+$.ajax({
+    type: 'GET',
+    url: "/getUser",
+    success:function(data){
+        for (var i = 0; i < data.length; i++)
+        {
+        	mytable.row.add([data[i].name, data[i].password]);
+        	mytable.draw();
+        }
+        
     }
 
-}
-
+});
 </script>
 </html>
