@@ -18,6 +18,7 @@
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
     
 </head>
 <body>
@@ -77,11 +78,9 @@ $('#example').DataTable({
         "url" : "/getUser",
         dataSrc : ''
     },
-    "columns" : [ {
-        "data" : "name"
-    }, {
-        "data" : "password"
-    }]
+    "columns" : [ {"data" : "name"}, 
+    			  { "data" : "password"}
+    			]
 });
 
 function myFunction() {
@@ -92,6 +91,7 @@ function myFunction() {
     }
 
 }
+
 
 </script>
 </html>
